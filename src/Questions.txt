@@ -1,0 +1,48 @@
+1;Mieux organiser le temps dont je dispose
+2;Me centrer sur le problème et voir comment je peux le résoudre
+3;Repenser à de bons moments que j’ai connus
+4;Essayer de me retrouver en compagnie d’autres personnes
+5;Me reprocher de perdre du temps
+6;Faire ce que je pense être le mieux
+7;Me tracasser à propos de mes problèmes
+8;Me reprocher de m’être mis(e) dans une telle situation
+9;Faire du « lèche-vitrine », du « shopping »
+10;Définir, dégager mes priorités
+11;Essayer de dormir
+12;M’offrir un des mes plats ou aliments favoris
+13;Me sentir anxieux(se) de ne pas pouvoir surmonter la situation
+14;Devenir très tendu(e) ou crispé(e)
+15;Penser à la manière dont j’ai résolu des problèmes similaires
+16;Me dire que cela n’est pas réellement en train de m’arriver
+17;Me reprocher d’être trop sensible/émotif(ve) face à la situation
+18;Sortir au restaurant ou manger quelque chose
+19;Être de plus en plus contrarié(e)
+20;M’acheter quelque chose
+21;Déterminer une ligne d’action et la suivre
+22;Me reprocher de ne pas savoir quoi faire
+23;Aller à une soirée, à une « fête » chez des amis
+24;M’efforcer d’analyser la situation
+25;Me bloquer et ne plus savoir que faire
+26;Entreprendre sans délai des actions d’adaptation
+27;Réfléchir à ce qui s’est produit et tirer parti de mes erreurs
+28;Souhaiter pouvoir changer ce qui s’est passé ou ce que j’ai ressenti
+29;Rendre visite à un(e) ami(e)
+30;Me tracasser à propos de ce que je vais faire
+31;Passer un moment avec une personne (intime)
+32;Aller me promener
+33;Me dire que cela ne se reproduira plus jamais
+34;Ressasser mes insuffisances et inadaptations générales
+35;Parler avec quelqu’un dont j’apprécie les conseils
+36;Analyser le problème avant de réagir
+37;Téléphoner à un(e) ami(e)
+38;Me mettre en colère
+39;Ajuster mes priorités
+40;Voir un film
+41;Prendre le contrôle de la situation
+42;Faire un effort supplémentaire pour que les « choses marchent »
+43;Mettre sur pied un ensemble de solutions différentes au problème
+44;Trouver un moyen pour ne plus y penser, pour éviter cette situation
+45;M’en prendre à d’autres personnes
+46;Profiter de la situation pour montrer ce sont je suis capable
+47;Essayer de m’organiser pour mieux dominer la situation
+48;Regarder la télévision
