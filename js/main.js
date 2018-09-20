@@ -7,6 +7,6 @@ $(document).ready(function(){
 function initQuestions() {
   var txtFile = "../src/Questions.txt";
   $.post('php/readFile.php', { file: txtFile}, function(result) {
-     alert(result);
+     $(".text").html(result);
   });
 }
