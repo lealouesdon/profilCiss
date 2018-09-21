@@ -4,10 +4,44 @@
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
     <title></title>
   </head>
   <body>
-    <div class="text">
+    <p id="titre">My Curiosity XP</p>
+    <div id="main">
+      <div class="info">
+        <p >Dans les situations stressantes, j'ai habituellement tendance à : </p>
+      </div>
+      <div class="question">
+        <p id="text"></p>
+      </div>
+      <div class="reponse">
+        <table id="rep">
+          <tr>
+            <th class="nb" onclick="rep(1)" id="rep1">
+              <img src="src/1.jpg" alt="1">
+            </th>
+            <th class="nb" onclick="rep(2)" id="rep2">
+              <img src="src/2.jpg" alt="2">
+            </th>
+            <th class="nb" onclick="rep(3)" id="rep3">
+              <img src="src/3.jpg" alt="3">
+            </th>
+            <th class="nb" onclick="rep(4)" id="rep4">
+              <img src="src/4.jpg" alt="4">
+            </th>
+            <th class="nb" onclick="rep(5)" id="rep5">
+              <img src="src/5.jpg" alt="5">
+            </th>
+          </tr>
+        </table>
+      </div>
     </div>
   </body>
+  <footer>
+    <img src="src/flecheG.png" alt="last" onclick="last()" class="foo" id="last">
+    <p id="page" class="foo">1/1</p>
+    <img src="src/flecheD.png" alt="next" onclick="next()" class="foo" id="next">
+  </footer>
 </html>

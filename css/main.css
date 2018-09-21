@@ -1,0 +1,106 @@
+html{
+  margin: auto;
+  height: 100vh;
+  /*max-width: 600px;*/
+}
+
+@font-face {
+    font-family: MainFont;
+    src: url(../src/Montserrat-Black.ttf);
+}
+
+@media (min-width : 1000px) {
+  html{
+    max-width: 600px;
+  }
+}
+
+/*@media screen and (min-width: 600px) {
+  #titre {
+     font-size: 66px;
+  }
+}*/
+
+body{
+  font-size: 2.8vh;
+  font-family: MainFont;
+}
+
+footer{
+  /*position: absolute;
+  bottom: 0px;*/
+  margin-top: 5vh;
+  width: 100%;
+  text-align: center;
+}
+
+.info{
+  text-align: center;
+  color: white;
+  font-weight: 100;
+  font-size: 2vh;
+  padding: 2vh;
+  margin-bottom: 5vh;
+}
+
+.foo{
+  display: inline;
+  margin: auto;
+}
+
+.question{
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 2vh;
+  height: 20vh;
+  box-shadow: inset 5px 5px 25px #888888;
+}
+#text{
+  padding: auto;
+}
+
+#main{
+  width: 70%;
+  margin: auto;
+  background-image: linear-gradient(#85BED4, #92D0BF);
+  height: 70vh;
+  margin-top: 13vh;
+}
+
+#rep{
+  width: 100%;
+  margin-top: 8vh;
+}
+
+th{
+  font-size: 5vh;
+}
+
+th:active {
+     font-size: 8vh;
+}
+
+th:hover {
+     font-size: 8vh;
+}
+
+#titre{
+  color: #F0F0F0;
+  font-size: 6.5vh;
+  position: absolute;
+  margin: auto;
+  top : 1vh;
+  /*left: 5vw;*/
+}
+
+#page{
+  color: #91CFC0;
+}
+
+.nb{
+  width: 20%;
+}
