@@ -13,6 +13,12 @@ html{
   html{
     max-width: 600px;
   }
+  .overlay{
+    max-width: 600px;
+  }
+  #titre{
+    left : 33vw;
+  }
 }
 
 /*@media screen and (min-width: 600px) {
@@ -22,7 +28,7 @@ html{
 }*/
 
 body{
-  font-size: 2.8vh;
+  font-size: 2.5vh;
   font-family: MainFont;
 }
 
@@ -77,16 +83,17 @@ footer{
 }
 
 th{
+  text-align: center;
   font-size: 5vh;
 }
 
-th:active {
+/*th:active {
      font-size: 8vh;
 }
 
 th:hover {
      font-size: 8vh;
-}
+}*/
 
 #titre{
   color: #F0F0F0;
@@ -94,6 +101,7 @@ th:hover {
   position: absolute;
   margin: auto;
   top : 1vh;
+  z-index:10000;
   /*left: 5vw;*/
 }
 
@@ -104,3 +112,119 @@ th:hover {
 .nb{
   width: 20%;
 }
+
+/*end graph*/
+.overlay{
+    opacity:1;
+    background-color:white;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    z-index:1000;
+}
+
+#graph{
+  height: 95vh;
+  width: 100%;
+  position: absolute;
+  bottom: 0vh;
+}
+
+.desc{
+  color : #91CFC0;
+}
+
+.bar{
+  width: 20vh;
+  text-align: center;
+  padding: 0px;
+}
+
+.progress{
+  background-color: white;
+}
+
+.progress-bar-vertical {
+  width: 5vw;
+  min-height: 70%;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 40%;
+  margin-bottom: 15%;
+}
+
+.progress-bar{
+  background-image: linear-gradient(#93C2DA, white);
+  border: none;
+  border-radius: 50px;
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+}
+
+/*percent*/
+.perc{
+  position: absolute;
+  width: 90%;
+  margin-left: 5vw;
+  z-index:10000;
+}
+
+#perc1{
+  top : 27vh;
+}
+
+#perc2{
+  top : 44vh;
+}
+
+#perc3{
+  top : 60.5vh;
+}
+
+.percDesc{
+  text-align: right;
+  font-size: 1.6vh;
+  color: #F0F0F0;
+}
+
+/*intro*/
+.intro{
+  opacity:1;
+  background-color:white;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  z-index:1000;
+}
+
+.introBtn{
+  position: absolute;
+  top: 40vh;
+  left: 30vw;
+}
+
+/*moons*/
+svg{
+  width: 75%;
+  transition: transform .1s; /* Animation */
+}
+
+svg:active{
+  width: 100%;
+}
+
+svg:hover{
+  transform: scale(1.2);
+}
+
+.a{fill:rgb(101, 143, 135);}
+
+.b{fill:white;}

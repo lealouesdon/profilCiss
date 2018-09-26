@@ -3,17 +3,26 @@ var reps = [];
 var index = 0;
 var selected = false;
 var reponse=0;
+var sourceQuestions = "../src/Questions.txt";
+var sourceCalcTemp = "../src/QRef.txt";
+var sexe; //1=Femme 2=Homme
 
 $(document).ready(function(){
   initQuestions();
   $("#next").hide();
   $("#last").hide();
+  $(".overlay").hide();
 });
+
+//intro
+function selectSexe(val) {
+  sexe = val;
+  $(".intro").hide();
+}
 
 //Questions
 function initQuestions() {
-  var txtFile = "../src/Questions.txt";
-  $.post('php/readFile.php', { file: txtFile}, function(result) {
+  $.post('php/readFile.php', { file: sourceQuestions}, function(result) {
       var res = result.split("\n");
       readQuestions(res);
   });
@@ -41,6 +50,7 @@ function next() {
   if(index+1==reps.length){
     $("#next").hide();
   }
+  $("#last").show();
   if(reponse!=null){
     sauv(reponse);
     getRep();
@@ -55,6 +65,9 @@ function next() {
 
 function last() {
   if(index > 0){
+    if (index==1) {
+      $("#last").hide();
+    }
     index--;
     $("#next").show();
     getRep();
@@ -75,7 +88,9 @@ function nbBottom() {
 //Reponses
 function rep(val) {
   //reponse = val;
-  select();
+  //select();
+  //click(val);
+
   if(index+1==reps.length){
     $("#next").hide();
   }
@@ -84,11 +99,11 @@ function rep(val) {
   }
   sauv(val);
   getRep();
-  select();
+
   nbBottom();
   showQ();
-  console.log("passe");
   selected=true;
+  select();
 }
 
 function sauv(val) {
@@ -97,50 +112,170 @@ function sauv(val) {
   }else{
     reps.push(val);
   }
-  index++;
+  if(index+1 == listQ.length){
+    calcScore();
+  }else{
+    index++;
+  }
+
 }
 
 function getRep() {
   reponse = reps[index];
-  console.log(reponse);
 }
 
 function select() {
   if(reponse==1){
-    $("#rep1").css("font-size", "8vh");
+    /*$("#rep1").css("font-size", "8vh");
     $("#rep2").css("font-size", "5vh");
     $("#rep3").css("font-size", "5vh");
     $("#rep4").css("font-size", "5vh");
-    $("#rep5").css("font-size", "5vh");
+    $("#rep5").css("font-size", "5vh");*/
+    $("#rep1").css("width", "100%");
+    $("#rep2").css("width", "75%");
+    $("#rep3").css("width", "75%");
+    $("#rep4").css("width", "75%");
+    $("#rep5").css("width", "75%");
+
   }else if(reponse==2){
-    $("#rep1").css("font-size", "5vh");
-    $("#rep2").css("font-size", "8vh");
-    $("#rep3").css("font-size", "5vh");
-    $("#rep4").css("font-size", "5vh");
-    $("#rep5").css("font-size", "5vh");
+    $("#rep1").css("width", "75%");
+    $("#rep2").css("width", "100%");
+    $("#rep3").css("width", "75%");
+    $("#rep4").css("width", "75%");
+    $("#rep5").css("width", "75%");
   }else if(reponse==3){
-    $("#rep1").css("font-size", "5vh");
-    $("#rep2").css("font-size", "5vh");
-    $("#rep3").css("font-size", "8vh");
-    $("#rep4").css("font-size", "5vh");
-    $("#rep5").css("font-size", "5vh");
+    $("#rep1").css("width", "75%");
+    $("#rep2").css("width", "75%");
+    $("#rep3").css("width", "100%");
+    $("#rep4").css("width", "75%");
+    $("#rep5").css("width", "75%");
   }else if(reponse==4){
-    $("#rep1").css("font-size", "5vh");
-    $("#rep2").css("font-size", "5vh");
-    $("#rep3").css("font-size", "5vh");
-    $("#rep4").css("font-size", "8vh");
-    $("#rep5").css("font-size", "5vh");
+    $("#rep1").css("width", "75%");
+    $("#rep2").css("width", "75%");
+    $("#rep3").css("width", "75%");
+    $("#rep4").css("width", "100%");
+    $("#rep5").css("width", "75%");
   }else if(reponse==5){
-    $("#rep1").css("font-size", "5vh");
-    $("#rep2").css("font-size", "5vh");
-    $("#rep3").css("font-size", "5vh");
-    $("#rep4").css("font-size", "5vh");
-    $("#rep5").css("font-size", "8vh");
+    $("#rep1").css("width", "75%");
+    $("#rep2").css("width", "75%");
+    $("#rep3").css("width", "75%");
+    $("#rep4").css("width", "75%");
+    $("#rep5").css("width", "100%");
   }else{
-    $("#rep1").css("font-size", "5vh");
-    $("#rep2").css("font-size", "5vh");
-    $("#rep3").css("font-size", "5vh");
-    $("#rep4").css("font-size", "5vh");
-    $("#rep5").css("font-size", "5vh");
+    $("#rep1").css("width", "75%");
+    $("#rep2").css("width", "75%");
+    $("#rep3").css("width", "75%");
+    $("#rep4").css("width", "75%");
+    $("#rep5").css("width", "75%");
   }
+}
+
+/*function click(val) {
+  if(val==1){
+    //$( "#rep1" ).slideUp( 300 ).delay( 800 ).fadeIn( 400 );
+    $( "#rep1" ).animate({zoom: '150%'}, "fast");
+    $( "#rep1" ).animate({zoom: '100%'}, "fast");
+  }else if (val==2) {
+    $( "#rep2" ).animate({zoom: '150%'}, "fast");
+    $( "#rep2" ).animate({zoom: '100%'}, "fast");
+  }else if (val==3) {
+    $( "#rep3" ).animate({zoom: '150%'}, "fast");
+    $( "#rep3" ).animate({zoom: '100%'}, "fast");
+  }else if (val==4) {
+    $( "#rep4" ).animate({zoom: '150%'}, "fast");
+    $( "#rep4" ).animate({zoom: '100%'}, "fast");
+  }else if (val==5) {
+    $( "#rep5" ).animate({zoom: '150%'}, "fast");
+    $( "#rep5" ).animate({zoom: '100%'}, "fast");
+  }
+}*/
+
+
+
+//end
+var tache = 0;
+var emotion = 0;
+var evitement = 0;
+var distruction = 0;
+var diversion = 0;
+
+var calcTemp = [];
+
+function calcScore() {
+  tache = 0;
+  emotion = 0;
+  evitement = 0;
+  distruction = 0;
+  diversion = 0;
+  initCalcTemp();
+}
+
+function initCalcTemp() {
+  $.post('php/readFile.php', { file: sourceCalcTemp}, function(result) {
+      var res = result.split("\n");
+      readCalcTemps(res);
+  });
+}
+
+function readCalcTemps(res) {
+  var i;
+  var arrayOfStrings;
+  var temp = [];
+  for (i = 0; i < res.length; i++) {
+      arrayOfStrings = res[i].split(";");
+      temp = [];
+      temp.push(arrayOfStrings[1]);
+      temp.push(arrayOfStrings[2]);
+      temp.push(arrayOfStrings[3]);
+      temp.push(arrayOfStrings[4]);
+      temp.push(arrayOfStrings[5]);
+      calcTemp.push(temp);
+  }
+  calc();
+}
+
+function calc() {
+  var i;
+  var rep;
+  var temp;
+  for(i=0;i<reps.length;i++){
+    rep = reps[i];
+    temp = calcTemp[i];
+    //console.log(temp);
+    tache += rep * temp[0];
+    emotion += rep * temp[1];
+    evitement += rep * temp[2];
+    distruction += rep * temp[3];
+    diversion += rep * temp[4];
+  }
+
+  console.log(tache);
+  console.log(emotion);
+  console.log(evitement);
+  console.log(distruction);
+  console.log(diversion);
+  setGraph(tache,emotion,evitement,distruction,diversion);
+  $(".overlay").show();
+}
+
+
+
+/*graph*/
+function setGraph(tache,emotion,evitement,distruction,diversion) {
+  $("#pB1")
+      .css("height", tache + "%")
+      .attr("aria-valuenow", tache);
+  $("#pB2")
+      .css("height", emotion + "%")
+      .attr("aria-valuenow", emotion);
+  $("#pB3")
+      .css("height", evitement + "%")
+      .attr("aria-valuenow", evitement);
+  $("#pB4")
+      .css("height", distruction + "%")
+      .attr("aria-valuenow", distruction);
+  $("#pB5")
+      .css("height", diversion + "%")
+      .attr("aria-valuenow", diversion);
+
 }
