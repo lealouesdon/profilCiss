@@ -5,6 +5,8 @@ var selected = false;
 var reponse=0;
 var sourceQuestions = "../src/Questions.txt";
 var sourceCalcTemp = "../src/QRef.txt";
+var equiH = "../src/H_RVal.txt.txt";
+var equiF = "../src/F_RVal.txt";
 var sexe; //1=Femme 2=Homme
 
 $(document).ready(function(){
@@ -254,11 +256,52 @@ function calc() {
   console.log(evitement);
   console.log(distruction);
   console.log(diversion);
-  setGraph(tache,emotion,evitement,distruction,diversion);
+  valuesGraph(tache,emotion,evitement,distruction,diversion);
   $(".overlay").show();
 }
 
+/*values for graph*/
+var equi = []; //equivalence score graph
+function valuesGraph(tache,emotion,evitement,distruction,diversion) {
+  var gTache = 0;
+  var gEmotion = 0;
+  var gEvitement = 0;
+  var gDistruction = 0;
+  var gDiversion = 0;
 
+
+  setGraph(tache,emotion,evitement,distruction,diversion);
+}
+
+function initEqui() {
+  /*if(sexe==1){
+
+  }else{
+
+  }*/
+
+  $.post('php/readFile.php', { file: equiH}, function(result) {
+      var res = result.split("\n");
+      readEqui(res);
+  });
+}
+
+function readEqui(res) {
+  var i;
+  var arrayOfStrings;
+  var temp = [];
+  for (i = 0; i < res.length; i++) {
+      arrayOfStrings = res[i].split(";");
+      temp = [];
+      temp.push(arrayOfStrings[1]);
+      temp.push(arrayOfStrings[2]);
+      temp.push(arrayOfStrings[3]);
+      temp.push(arrayOfStrings[4]);
+      temp.push(arrayOfStrings[5]);
+      equi.push(temp);
+  }
+  calc();
+}
 
 /*graph*/
 function setGraph(tache,emotion,evitement,distruction,diversion) {
