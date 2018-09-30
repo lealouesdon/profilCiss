@@ -214,17 +214,31 @@ th:hover {
 /*moons*/
 svg{
   width: 75%;
-  transition: transform .1s; /* Animation */
+  transition: all .1s linear;
 }
 
 svg:active{
-  width: 100%;
-}
-
-svg:hover{
   transform: scale(1.2);
 }
+/*
+svg:hover{
+  transform: scale(1.2);
+}*/
 
 .a{fill:rgb(101, 143, 135);}
 
 .b{fill:white;}
+
+.anim{
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin: auto;
+  }
+}
