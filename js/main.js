@@ -1,25 +1,10 @@
-var listQ = [];
-var reps = [];
-var index = 0;
-var selected = false;
-var reponse=0;
-var sourceQuestions = "../src/Questions.txt";
-var sourceCalcTemp = "../src/QRef.txt";
-var equiH = "../src/H_RVal.txt";
-var equiF = "../src/F_RVal.txt";
 var sexe; //1=Femme 2=Homme
-
-$(document).ready(function(){
-  initQuestions();
-  $("#next").hide();
-  $("#last").hide();
-  $(".overlay").hide();
-});
 
 //intro
 function selectSexe(val) {
   sexe = val;
-  $(".intro").hide();
+  let urlParams = new URLSearchParams(window.location.search);
+  window.open('url' + urlParams);
 }
 
 //Questions

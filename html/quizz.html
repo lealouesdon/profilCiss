@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="../js/quizz.js"></script>
+    <link rel="stylesheet" href="../css/quizz.css">
+    <title></title>
+  </head>
+  <body>
+    <p id="titre">My Curiosity XP</p>
+    <div id="main">
+      <div class="info">
+        <p >Dans les situations stressantes, j'ai habituellement tendance à : </p>
+      </div>
+      <div class="question">
+        <p id="text"></p>
+      </div>
+      <div class="reponse">
+        <table id="rep">
+          <tr>
+            <th id="rep1" class="nb" onclick="rep(1)" >
+              <p>1</p>
+            </th>
+            <th  id="rep2" class="nb" onclick="rep(2)" >
+              <p>2</p>
+            </th>
+            <th id="rep3" class="nb" onclick="rep(3)" >
+              <p>3</p>            
+            </th>
+            <th id="rep4" class="nb" onclick="rep(4)" >
+              <p>4</p>
+            </th>
+            <th id="rep5" class="nb" onclick="rep(5)" >
+              <p>5</p>
+            </th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <img src="../src/flecheG.png" alt="last" onclick="last()" class="foo" id="last">
+    <p id="page" class="foo">1/1</p>
+    <img src="../src/flecheD.png" alt="next" onclick="next()" class="foo" id="next">
+  </footer>
+</html>
