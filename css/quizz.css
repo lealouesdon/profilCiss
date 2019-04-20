@@ -59,12 +59,59 @@ html{
     width: 70%;
     margin: auto;
     text-align: center;
-    padding: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     height: 20vh;
     box-shadow: inset 5px 5px 25px #888888;
+    text-overflow: clip;
+    overflow: hidden;
   }
-  #text{
-    padding: auto;
+  .text{
+    padding-left: -33%;
+    word-wrap:nowrap;
+    white-space: nowrap;
+  }
+  /* #text::after{
+    content: "question suivante";
+    padding-left: 50%;
+  } */
+
+  #currentQuestion{
+    position: relative;
+    float: left;
+    width: 50%;
+    left: 25%;
+  }
+
+  #nextQuestion{
+    position: relative;
+    float: left;
+    width: 50%;
+    left: 50%;
+    transition: left 0.5s;
+  }
+
+  .question:hover #currentQuestion{
+    animation-name : currentLeft;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+
+  }
+
+  @keyframes currentLeft{
+    from {left:25%;}
+    to {left:-50%;}
+  }
+
+  .question:hover #nextQuestion{
+    animation-name : nextLeft;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes nextLeft{
+    from {left:50%;}
+    to {left:-25%;}
   }
   
   #main{
@@ -110,10 +157,11 @@ html{
   .nb{
     width: 20%;
     cursor: pointer;
+    transition-property: transform;
+    transition-duration: 0.2s;
   }
   
-  .nb:hover {
+  .nb:hover, .nb.selected{
     transform: scale(1.5); 
   }
-
   
