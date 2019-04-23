@@ -1,7 +1,6 @@
 html{
     margin: auto;
     height: 100vh;
-    /*max-width: 600px;*/
   }
   
   @font-face {
@@ -9,17 +8,17 @@ html{
       src: url(../src/Montserrat-Black.ttf);
   }
   
-  @media (min-width : 1000px) {
+  /* @media (min-width : 1000px) {
     html{
       max-width: 600px;
     }
     .overlay{
       max-width: 600px;
     }
-    #titre{
+     #titre{
       left : 33vw;
-    }
-  }
+    } 
+  } */
   
   /*@media screen and (min-width: 600px) {
     #titre {
@@ -33,48 +32,62 @@ html{
   }
   
   footer{
-    margin-top: 5vh;
-    width: 100%;
+    position: relative;
+    width: 100vw;
+    height: 10vh;
+    left: 0;
     text-align: center;
   }
   
   .info{
-    text-align: center;
+    position: relative;
+    display : block;
+    text-align: left;
+    height: 25%;
     color: white;
     font-weight: 100;
     font-size: 2vh;
-    padding: 2vh;
-    margin-bottom: 5vh;
+    padding: 7.5%;
+
   }
   
   .foo{
+    line-height: 100%;
     display: inline;
     margin: auto;
   }
+
   
   .question{
+    display: block;
+    position: relative;
     background-color: white;
     color: black;
     font-weight: bold;
-    width: 70%;
-    margin: auto;
+    width: 85%;
+    height: 30%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom:20%;
     text-align: center;
     padding-top: 2vh;
     padding-bottom: 2vh;
-    height: 20vh;
-    box-shadow: inset 5px 5px 25px #888888;
+    box-shadow: inset 0px 0px 0.8vh 0vh rgb(99, 151, 172);;
     text-overflow: clip;
     overflow: hidden;
+    border-radius: 1%;
   }
   .text{
     padding-left: -33%;
     word-wrap:nowrap;
     white-space: nowrap;
   }
-  /* #text::after{
-    content: "question suivante";
-    padding-left: 50%;
-  } */
+
+  .reponse{
+    display: block;
+    position: relative;
+    height: 30%;
+  }
 
   #currentQuestion{
     position: relative;
@@ -115,39 +128,51 @@ html{
   }
   
   #main{
-    width: 70%;
-    margin: auto;
+    display: block;
+    width: 100vw;
+    margin-left: auto;
+    margin-right:auto;
     background-image: linear-gradient(#85BED4, #92D0BF);
-    height: 70vh;
-    margin-top: 13vh;
+    box-shadow: 0px 0px 8vh -2vh rgb(99, 151, 172);
+    height: 75vh;
+    margin-top: 15vh;
+    border-radius: 1%;
   }
   
   #rep{
-    width: 100%;
+    width: 80%;
     margin-top: 8vh;
+    margin-left: auto;
+    margin-right:auto;
   }
+
+
   
   th{
     text-align: center;
     font-size: 5vh;
   }
   
-  /*th:active {
-       font-size: 8vh;
-  }
-  
-  th:hover {
-       font-size: 8vh;
-  }*/
-  
   #titre{
     color: #F0F0F0;
-    font-size: 6.5vh;
+    font-size: 10vw;
     position: absolute;
-    margin: auto;
+    margin: 0;
+    padding: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
     top : 1vh;
     z-index:10000;
-    /*left: 5vw;*/
+  }
+
+  @media (min-aspect-ratio : 2/3){
+    #titre{
+      font-size: 6.5vh;
+    }
+    #main{
+      width:66vh;
+    }
   }
   
   #page{
@@ -165,3 +190,10 @@ html{
     transform: scale(1.5); 
   }
   
+  #triangle{
+    display: block;
+    position: relative;
+    transform: scale(1,0.2);
+    width: 70%;
+    margin: auto;
+  }
