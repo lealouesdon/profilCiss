@@ -38,7 +38,10 @@ function readQuestions(res) {
 
 function showQ() {
   if(index<listQ.length){
-    $("#text").html(listQ[index]);
+    $("#currentQuestion.text").html(listQ[index]);
+  }
+  if(index+1<listQ.length){
+    $("#nextQuestion.text").html(listQ[index+1]);
   }
 }
 
@@ -121,26 +124,26 @@ function getRep() {
 function select() {
   console.log(reponse);
   
-  $("#rep1").css("transform", "scale(1)");
-  $("#rep2").css("transform", "scale(1)");
-  $("#rep3").css("transform", "scale(1)");
-  $("#rep4").css("transform", "scale(1)");
-  $("#rep5").css("transform", "scale(1)");
+  $("#rep1").removeClass("selected");
+  $("#rep2").removeClass("selected");
+  $("#rep3").removeClass("selected");
+  $("#rep4").removeClass("selected");
+  $("#rep5").removeClass("selected");
 
 
   if(reponse==1){
-    $("#rep1").css("transform", "scale(1.5)");
+    $("#rep1").addClass("selected");
   }else if(reponse==2){
-    $("#rep2").css("transform", "scale(1.5)");
+    $("#rep2").addClass("selected");
 
   }else if(reponse==3){
-    $("#rep3").css("transform", "scale(1.5)");
+    $("#rep3").addClass("selected");
 
   }else if(reponse==4){
-    $("#rep4").css("transform", "scale(1.5)");
+    $("#rep4").addClass("selected");
 
   }else if(reponse==5){
-    $("#rep5").css("transform", "scale(1.5)");
+    $("#rep5").addClass("selected");
   }
 }
 
@@ -215,7 +218,6 @@ function calc() {
 function load_page(){
     var myWindow = window.open("../html/result.html?s="+sexe+"&t="+tache+"&em="+emotion+"&ev="+evitement+"&dis="+distruction+"&div="+diversion, "_self");     
 };
-
 
 
 
