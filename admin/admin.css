@@ -1,0 +1,9 @@
+li:hover {
+  color: aqua;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+}

@@ -2,15 +2,17 @@ var listQ = [];
 var reps = [];
 var index = 0;
 var selected = false;
-var reponse=0;
+var reponse = 0;
 var sourceQuestions = "../src/Questions.txt";
 var sourceCalcTemp = "../src/QRef.txt";
 
 const urlParams = new URLSearchParams(window.location.search);
-var sexe = urlParams.get('s'); //1=Femme 2=Homme
+var sexe = urlParams.get("s"); //1=Femme 2=Homme
+var nom = urlParams.get("nom");
+var prenom = urlParams.get("prenom");
+var owl;
 
-
-$(document).ready(function(){
+$(document).ready(function() {
   initQuestions();
   $("#next").hide();
   $("#last").hide();
@@ -19,9 +21,9 @@ $(document).ready(function(){
 
 //Questions
 function initQuestions() {
-  $.post('../php/readFile.php', { file: sourceQuestions}, function(result) {
-      var res = result.split("\n");
-      readQuestions(res);
+  $.post("../php/readFile.php", { file: sourceQuestions }, function(result) {
+    var res = result.split("\n");
+    readQuestions(res);
   });
 }
 
@@ -29,43 +31,60 @@ function readQuestions(res) {
   var i;
   var arrayOfStrings;
   for (i = 0; i < res.length; i++) {
-      arrayOfStrings = res[i].split(";");
-      listQ.push(arrayOfStrings[1]);
+    arrayOfStrings = res[i].split(";");
+    listQ.push(arrayOfStrings[1]);
   }
-  showQ();
+  initCarousel(listQ);
+  //showQ();
   nbBottom();
 }
-
+function initCarousel(questions) {
+  questions.forEach(element => {
+    var node = document.createElement("DIV");
+    var textnode = document.createTextNode(element);
+    node.appendChild(textnode);
+    document.getElementById("owl-carousel").appendChild(node);
+  });
+  owl = $("#owl-carousel").owlCarousel({
+    loop: false,
+    items: 1,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false
+  });
+}
 function showQ() {
-  if(index<listQ.length){
-    $("#currentQuestion.text").html(listQ[index]);
+  /*if (index < listQ.length) {
+    $("#currentQuestion .text").html(listQ[index]);
   }
-  if(index+1<listQ.length){
-    $("#nextQuestion.text").html(listQ[index+1]);
-  }
+  if (index + 1 < listQ.length) {
+    $("#nextQuestion .text").html(listQ[index + 1]);
+    console.log(listQ[index + 1]);
+  }*/
 }
 
 //btns
 function next() {
-  if(index+1==reps.length){
+  if (index + 1 == reps.length) {
     $("#next").hide();
   }
   $("#last").show();
-  if(reponse!=null){
+  if (reponse != null) {
     sauv(reponse);
     getRep();
     select();
     nbBottom();
-    showQ();
+    owl.trigger("next.owl.carousel");
     selected = false;
-  }else{
+  } else {
     alert("Saisir une réponse");
   }
 }
 
 function last() {
-  if(index > 0){
-    if (index==1) {
+  if (index > 0) {
+    if (index == 1) {
       $("#last").hide();
     }
     index--;
@@ -73,48 +92,46 @@ function last() {
     getRep();
     select();
     nbBottom();
-    showQ();
-  }else{
+    owl.trigger("prev.owl.carousel", [300]);
+  } else {
     $("#last").hide();
   }
 }
 
 function nbBottom() {
   var str = "";
-  str = str.concat(index+1,"/",listQ.length);
+  str = str.concat(index + 1, "/", listQ.length);
   $("#page").html(str);
 }
 
 //Reponses
 function rep(val) {
-
-  if(index+1==reps.length){
+  if (index + 1 == reps.length) {
     $("#next").hide();
   }
-  if(index >= 0){
+  if (index >= 0) {
     $("#last").show();
   }
   sauv(val);
   getRep();
 
   nbBottom();
-  showQ();
-  selected=true;
+  owl.trigger("next.owl.carousel");
+  selected = true;
   select();
 }
 
 function sauv(val) {
-  if(reps.length-1>=index){
-    reps[index]=val;
-  }else{
+  if (reps.length - 1 >= index) {
+    reps[index] = val;
+  } else {
     reps.push(val);
   }
-  if(index+1 == listQ.length){
+  if (index + 1 == listQ.length) {
     calcScore();
-  }else{
+  } else {
     index++;
   }
-
 }
 
 function getRep() {
@@ -122,27 +139,23 @@ function getRep() {
 }
 
 function select() {
-  console.log(reponse);
-  
+  //console.log(reponse);
+
   $("#rep1").removeClass("selected");
   $("#rep2").removeClass("selected");
   $("#rep3").removeClass("selected");
   $("#rep4").removeClass("selected");
   $("#rep5").removeClass("selected");
 
-
-  if(reponse==1){
+  if (reponse == 1) {
     $("#rep1").addClass("selected");
-  }else if(reponse==2){
+  } else if (reponse == 2) {
     $("#rep2").addClass("selected");
-
-  }else if(reponse==3){
+  } else if (reponse == 3) {
     $("#rep3").addClass("selected");
-
-  }else if(reponse==4){
+  } else if (reponse == 4) {
     $("#rep4").addClass("selected");
-
-  }else if(reponse==5){
+  } else if (reponse == 5) {
     $("#rep5").addClass("selected");
   }
 }
@@ -166,9 +179,9 @@ function calcScore() {
 }
 
 function initCalcTemp() {
-  $.post('../php/readFile.php', { file: sourceCalcTemp}, function(result) {
-      var res = result.split("\n");
-      readCalcTemps(res);
+  $.post("../php/readFile.php", { file: sourceCalcTemp }, function(result) {
+    var res = result.split("\n");
+    readCalcTemps(res);
   });
 }
 
@@ -177,14 +190,14 @@ function readCalcTemps(res) {
   var arrayOfStrings;
   var temp = [];
   for (i = 0; i < res.length; i++) {
-      arrayOfStrings = res[i].split(";");
-      temp = [];
-      temp.push(arrayOfStrings[1]);
-      temp.push(arrayOfStrings[2]);
-      temp.push(arrayOfStrings[3]);
-      temp.push(arrayOfStrings[4]);
-      temp.push(arrayOfStrings[5]);
-      calcTemp.push(temp);
+    arrayOfStrings = res[i].split(";");
+    temp = [];
+    temp.push(arrayOfStrings[1]);
+    temp.push(arrayOfStrings[2]);
+    temp.push(arrayOfStrings[3]);
+    temp.push(arrayOfStrings[4]);
+    temp.push(arrayOfStrings[5]);
+    calcTemp.push(temp);
   }
   calc();
 }
@@ -193,7 +206,7 @@ function calc() {
   var i;
   var rep;
   var temp;
-  for(i=0;i<reps.length;i++){
+  for (i = 0; i < reps.length; i++) {
     rep = reps[i];
     temp = calcTemp[i];
     //console.log(temp);
@@ -215,11 +228,24 @@ function calc() {
   //$(".overlay").show();
 }
 
-function load_page(){
-    var myWindow = window.open("../html/result.html?s="+sexe+"&t="+tache+"&em="+emotion+"&ev="+evitement+"&dis="+distruction+"&div="+diversion, "_self");     
-};
-
-
-
-
-
+function load_page() {
+  var myWindow = window.open(
+    "../html/result.html?s=" +
+      sexe +
+      "&t=" +
+      tache +
+      "&em=" +
+      emotion +
+      "&ev=" +
+      evitement +
+      "&dis=" +
+      distruction +
+      "&div=" +
+      diversion +
+      "&nom=" +
+      nom +
+      "&prenom=" +
+      prenom,
+    "_self"
+  );
+}

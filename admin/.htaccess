@@ -1,0 +1,5 @@
+AuthUserFile /home/mycurioszc/s01/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Accès Restreint"
+AuthType Basic
+require valid-user

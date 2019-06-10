@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
     <title></title>
   </head>
   <body>
-  <div class="intro"><!--
-    --><div class="introBtn" id="femme">
-        <a href="html/quizz.html?s=1" class="button"> <img src="src/femme.png"> <p>Femme</p></a>
-        
-    </div><!--
-    --><div class="introBtn" id="homme">
-        <a href="html/quizz.html?s=2" class="button"> <img src="src/homme.png"> <p>Homme</p></a>
-    </div><!--
-  --></div>
-  <p id="titre">My Curiosity XP</p>
+    <div class="intro">
+      <div id="infoClient">
+        <label for="name">Nom:</label>
+
+        <input type="text" id="nom" name="nom" />
+        <label for="name">Prénom:</label>
+
+        <input type="text" id="prenom" name="prenom" />
+      </div>
+
+      <!--
+    -->
+      <div class="introBtn" id="femme">
+        <img src="src/femme.png" onclick="selectSexe(1)" />
+        <p>Femme</p>
+      </div>
+      <!--
+    -->
+      <div class="introBtn" id="homme">
+        <img src="src/homme.png" onclick="selectSexe(2)" />
+        <p>Homme</p>
+      </div>
+      <!--
+  -->
+    </div>
+    <p id="titre">My Curiosity Experience</p>
+    <a href="admin/index.html" id="admin"><img src="src/admin.png"/></a>
   </body>
 </html>
